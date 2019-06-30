@@ -1,0 +1,76 @@
+{
+  "name": "my-basic-boilerplate",
+  "version": "1.0.0",
+  "description": "My basic boilerplate",
+  "main": "index.js",
+  "author": "Eduard Trayt <eduard2011rus@gmail.com> (https://github.com/EdMSL)",
+  "repository": {
+    "type": "git",
+    "url": "/"
+  },
+  "license": "ISC",
+  "keywords": [],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "ie 11"
+    ]
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --config=./config/webpack.dev.config.js --hot --open --inline",
+    "build": "cross-env NODE_ENV=production webpack --env production --config=./config/webpack.config.js --progress -p",
+    "webp": "imagemin --plugin=webp build/images/**/*.{jpg,png} --out-dir=build/images/webp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.4.5",
+    "@babel/preset-env": "~7.4.5",
+    "autoprefixer": "~9.6.0",
+    "babel-eslint": "~10.0.2",
+    "babel-loader": "~8.0.6",
+    "clean-webpack-plugin": "~3.0.0",
+    "copy-webpack-plugin": "~5.0.3",
+    "cross-env": "~5.2.0",
+    "css-loader": "~3.0.0",
+    "cssnano": "~4.1.10",
+    "eslint": "~6.0.1",
+    "eslint-config-airbnb-base": "~13.1.0",
+    "eslint-import-resolver-webpack": "~0.11.1",
+    "eslint-plugin-babel": "~5.3.0",
+    "eslint-plugin-import": "~2.18.0",
+    "file-loader": "~4.0.0",
+    "html-webpack-plugin": "~3.2.0",
+    "image-webpack-loader": "~5.0.0",
+    "imagemin-cli": "~4.0.1",
+    "imagemin-mozjpeg": "~8.0.0",
+    "imagemin-pngquant": "~8.0.0",
+    "imagemin-svgo": "~7.0.0",
+    "imagemin-webp": "~5.1.0",
+    "imagemin-webpack-plugin": "~2.4.2",
+    "mini-css-extract-plugin": "~0.7.0",
+    "node-sass": "~4.12.0",
+    "path": "~0.12.7",
+    "postcss-loader": "~3.0.0",
+    "resolve-url-loader": "~3.1.0",
+    "sass-loader": "~7.1.0",
+    "sass-resources-loader": "~2.0.1",
+    "source-map-loader": "~0.2.4",
+    "style-loader": "~0.23.1",
+    "stylelint": "~10.1.0",
+    "stylelint-config-standard": "~18.3.0",
+    "stylelint-order": "~3.0.0",
+    "stylelint-scss": "~3.8.0",
+    "webpack": "~4.35.0",
+    "webpack-cli": "~3.3.5",
+    "webpack-dev-server": "~3.7.2",
+    "webpack-merge": "~4.2.1"
+  }
+}

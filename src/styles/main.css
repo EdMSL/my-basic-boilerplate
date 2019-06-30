@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+
+  src:
+    url("../fonts/opensans.woff2") format("woff2"),
+    url("../fonts/opensans.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+
+  src:
+    url("../fonts/opensanslight.woff2") format("woff2"),
+    url("../fonts/opensanslight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+
+  src:
+    url("../fonts/opensansbold.woff2") format("woff2"),
+    url("../fonts/opensansbold.woff") format("woff");
+}
+
+.block {
+  background-image: url("../images/decoration/test.jpg");
+}
+
+h1 {
+  position: absolute;
+  font-family: "Open Sans", serif;
+  color: rgb(81, 212, 191);
+}
+
+/* this is comment */
+
+p {
+  position: relative;
+  display: block;
+
+  /* fdf */
+
+  color: orange;
+}
+
+p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  display: block;
+  width: 50px;
+  height: 50px;
+  /* background-image: url("~$images/icons/icon-facebook.svg"); */
+}

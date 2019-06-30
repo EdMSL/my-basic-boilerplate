@@ -1,0 +1,23 @@
+{
+  "allowSyntheticDefaultImports": true,
+  "compilerOptions": {
+    "outDir": "./build/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": false,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "lib": [ "es2015", "dom", "es6" ],
+    "baseUrl": ".",
+    "paths": {
+      "$root/*": [ "src/*" ],
+      "$styles/*": [ "src/styles/*" ],
+      "$images/*": [ "src/images/*" ],
+    }
+  },
+  "include": [
+    "./src/**/*",
+  ],
+  "exclude": ["node_modules", "./build/**/*"]
+}
