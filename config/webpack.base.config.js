@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -16,9 +17,18 @@ const htmlPlugin = new HtmlWebpackPlugin({
   inject: false,
 });
 
+const copyContentImages = new CopyWebpackPlugin([
+  {
+    from: `${PATHS.src}/images/content/*`,
+    // to: 'images/[name].[ext]',
+    // ignore: ['*.svg'],
+  },
+]);
+
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
   htmlPlugin,
+  copyContentImages,
 ];
 
 const configuration = {
@@ -29,9 +39,13 @@ const configuration = {
     sourceMapFilename: '[name].js.map',
     publicPath: '/',
   },
+  externals: {
+    paths: PATHS,
+  },
   resolve: {
     alias: {
       $root: path.resolve(__dirname, `${PATHS.src}/`),
+      $components: path.resolve(__dirname, `${PATHS.src}/components/`),
       $styles: path.resolve(__dirname, `${PATHS.src}/styles/`),
       $images: path.resolve(__dirname, `${PATHS.src}/images/`),
     },

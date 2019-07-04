@@ -8,11 +8,6 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const pngquant = require('imagemin-pngquant');
 const svgo = require('imagemin-svgo');
 const webp = require('imagemin-webp');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const devWebpackConfig = require('./webpack.dev.config');
-// const buildWebpackConfig = require('./webpack.build.config');
-
-console.log(devWebpackConfig.module.rules);
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -100,7 +95,7 @@ const plugins = [
   //   from: `${PATHS.src}/images/**/*.{jpg,jpeg,png}`,
   //   to: 'images/[name].webp',
   // }]),
-  // ...(isDevelopment ? [] : [imagemin]),
+  ...(isDevelopment ? [] : [imagemin]),
   // new ImageminPlugin({
   //   plugins: [
   //     webp({
@@ -244,31 +239,31 @@ const configuration = {
               },
             },
           },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              // disable: false,
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75,
-              },
-            },
-          },
+          // {
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     // disable: false,
+          //     mozjpeg: {
+          //       progressive: true,
+          //       quality: 65,
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //       enabled: false,
+          //     },
+          //     pngquant: {
+          //       quality: '65-90',
+          //       speed: 4,
+          //     },
+          //     gifsicle: {
+          //       interlaced: false,
+          //     },
+          //     // the webp option will enable WEBP
+          //     webp: {
+          //       quality: 75,
+          //     },
+          //   },
+          // },
         ],
       },
       {
@@ -300,5 +295,7 @@ const configuration = {
   devtool,
   plugins,
 };
+
+console.log(configuration.plugins);
 
 module.exports = configuration;
