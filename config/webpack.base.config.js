@@ -17,18 +17,18 @@ const htmlPlugin = new HtmlWebpackPlugin({
   inject: false,
 });
 
-const copyContentImages = new CopyWebpackPlugin([
-  {
-    from: `${PATHS.src}/images/content/*`,
-    // to: 'images/[name].[ext]',
-    // ignore: ['*.svg'],
-  },
-]);
+// const copyContentImages = new CopyWebpackPlugin([
+//   {
+//     from: `${PATHS.src}/images/content/*`,
+//     to: 'images/content/[name].[ext]',
+//     // ignore: ['*.svg'],
+//   },
+// ]);
 
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
   htmlPlugin,
-  copyContentImages,
+  // copyContentImages,
 ];
 
 const configuration = {

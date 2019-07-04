@@ -152,8 +152,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
-        test: /\.(png|jpe?g)$/,
-        // exclude: `${baseWebpackConfig.externals.paths.src}/images/content`,
+        test: /\.(png|jpe?g|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -162,26 +161,26 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
               context: 'images',
               publicPath: (url, resourcePath, context) => {
                 if (/content/.test(resourcePath)) {
-                  return `${context}/${url}`;
+                  return `${context}/content/${url}`;
                 }
 
                 if (/decoration/.test(resourcePath)) {
-                  return `../${context}/${url}`;
+                  return `../${context}/decoration/${url}`;
                 }
 
                 return `output_path/${url}`;
               },
-              outputPath: (url, resourcePath) => {
+              outputPath: (url, resourcePath, context) => {
                 // const relativePath = path.relative(context, resourcePath);
-                if (/my-custom-image\.png/.test(resourcePath)) {
-                  return `other_output_path/${url}`;
+                if (/content/.test(resourcePath)) {
+                  return `${context}/content/${url}`;
                 }
 
-                if (/images/.test(resourcePath)) {
-                  return `images/${url}`;
+                if (/decoration/.test(resourcePath)) {
+                  return `${context}/decoration/${url}`;
                 }
 
-                return `output_path/${url}`;
+                return `${context}/${url}`;
               },
             },
           },
