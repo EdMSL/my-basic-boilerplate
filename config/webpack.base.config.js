@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -9,26 +10,45 @@ const PATHS = {
   conf: path.join(__dirname, './config'),
 };
 
-const htmlPlugin = new HtmlWebpackPlugin({
-  title: 'Basic boilerplate',
-  template: `${PATHS.src}/index.html`,
-  filename: 'index.html',
-  favicon: 'src/images/favicon.ico',
-  inject: false,
-});
+function generateHtmlPlugins(templateDir) {
+  const templateFiles = fs.readdirSync(templateDir);
 
-// const copyContentImages = new CopyWebpackPlugin([
-//   {
-//     from: `${PATHS.src}/images/content/*`,
-//     to: 'images/content/[name].[ext]',
-//     // ignore: ['*.svg'],
-//   },
-// ]);
+  return templateFiles.map((item) => {
+    const fileData = item.split('.');
+    const name = fileData[0];
+    const ext = fileData[1];
+
+    return new HtmlWebpackPlugin({
+      filename: `${name}.html`,
+      template: `${PATHS.src}/html/${name}.${ext}`,
+      favicon: 'src/images/favicon.ico',
+      inject: false,
+    });
+  });
+}
+
+// const htmlPlugin = new HtmlWebpackPlugin({
+//   title: 'Basic boilerplate',
+//   template: `${PATHS.src}/index.html`,
+//   filename: 'index.html',
+//   favicon: 'src/images/favicon.ico',
+//   inject: false,
+// });
+
+const copyContentImages = new CopyWebpackPlugin([
+  {
+    from: `${PATHS.src}/images/content/*`,
+    to: 'images/content/[name].[ext]',
+    // ignore: ['*.svg'],
+  },
+]);
+
+const htmlPlugin = generateHtmlPlugins(`${PATHS.src}/html`);
 
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
-  htmlPlugin,
-  // copyContentImages,
+  ...htmlPlugin,
+  copyContentImages,
 ];
 
 const configuration = {

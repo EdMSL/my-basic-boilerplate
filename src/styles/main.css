@@ -58,8 +58,8 @@ p::after {
   top: 0;
   left: 0;
   z-index: 13;
+
   display: block;
   width: 50px;
   height: 50px;
-  background-image: url("~$images/content/test.png");
 }

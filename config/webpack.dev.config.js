@@ -36,7 +36,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
-        test: /\.(png|jpe?g)$/,
+        test: /\.(png|jpe?g|svg)$/,
         loaders: [
           {
             loader: 'file-loader',
