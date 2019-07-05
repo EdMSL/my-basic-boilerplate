@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -27,13 +28,15 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
-// const htmlPlugin = new HtmlWebpackPlugin({
-//   title: 'Basic boilerplate',
-//   template: `${PATHS.src}/index.html`,
-//   filename: 'index.html',
-//   favicon: 'src/images/favicon.ico',
-//   inject: false,
-// });
+const html = glob.sync(`${PATHS.src}/html/*.html`)
+  .map((htmlFile) => {
+    return new HtmlWebpackPlugin({
+      filename: path.basename(htmlFile),
+      template: htmlFile,
+      favicon: 'src/images/favicon.ico',
+      inject: false,
+    });
+  });
 
 const copyContentImages = new CopyWebpackPlugin([
   {
@@ -46,8 +49,9 @@ const copyContentImages = new CopyWebpackPlugin([
 const htmlPlugin = generateHtmlPlugins(`${PATHS.src}/html`);
 
 const plugins = [
-  new webpack.WatchIgnorePlugin(['build']),
-  ...htmlPlugin,
+  // new webpack.WatchIgnorePlugin(['build']),
+  // ...htmlPlugin,
+  ...html,
   copyContentImages,
 ];
 

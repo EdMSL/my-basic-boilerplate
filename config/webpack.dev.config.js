@@ -50,6 +50,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     port: 8081,
     hot: true,
     compress: true,
+    open: true,
     contentBase: false,
     // contentBase: 'images',
     // contentBase: `${PATHS.dist}`,

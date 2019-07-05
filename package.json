@@ -25,7 +25,7 @@
     ]
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --config=./config/webpack.dev.config.js --hot --open --inline",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --config=./config/webpack.dev.config.js --inline",
     "build": "cross-env NODE_ENV=production webpack --env production --config=./config/webpack.build.config.js --progress -p",
     "webp": "imagemin --plugin=webp build/images/**/*.{jpg,png} --out-dir=build/images/webp",
     "test": "echo \"Error: no test specified\" && exit 1"
