@@ -28,7 +28,7 @@ const ImageminPluginLossless = new ImageminWebpack({
     plugins: [
       imageminJpegtran({
         progressive: true, /* default false */
-        arithmetic: true, /* default false */
+        arithmetic: false, /* default false */
       }),
       imageminOptipng({
         optimizationLevel: 3, /* 0...7 default 3 */
@@ -122,7 +122,7 @@ const ImageminWebpPlugin = new ImageminWebpWebpackPlugin({
     test: /\.(jpe?g|png)/,
     options: {
       preset: 'default', /* default, photo, picture, drawing, icon, text */
-      quality: 90,
+      quality: 85,
       alphaQuality: 90,
       method: 4, /* 0...6 default 4 */
       sns: 80, /* 0...100 default 80 */
@@ -173,7 +173,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
-        test: /\.(png|jpe?g|svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -189,10 +189,9 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                   return `../${context}/decoration/${url}`;
                 }
 
-                return `output_path/${url}`;
+                return `${context}/${url}`;
               },
               outputPath: (url, resourcePath, context) => {
-                // const relativePath = path.relative(context, resourcePath);
                 if (/content/.test(resourcePath)) {
                   return `${context}/content/${url}`;
                 }

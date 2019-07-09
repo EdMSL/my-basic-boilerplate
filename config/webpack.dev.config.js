@@ -36,7 +36,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
-        test: /\.(png|jpe?g|svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         loaders: [
           {
             loader: 'file-loader',
@@ -52,9 +52,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     open: true,
     contentBase: false,
-    // contentBase: 'images',
-    // contentBase: `${PATHS.dist}`,
-    // contentBase: `${baseWebpackConfig.externals.paths.dist}`,
     publicPath: '/',
     historyApiFallback: true,
   },

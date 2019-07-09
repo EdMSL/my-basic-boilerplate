@@ -3,11 +3,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+// const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const pngquant = require('imagemin-pngquant');
 const svgo = require('imagemin-svgo');
 const webp = require('imagemin-webp');
+const glob = require('glob');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -31,6 +32,16 @@ const htmlPlugin = new HtmlWebpackPlugin({
   favicon: 'src/images/favicon.ico',
   inject: false,
 });
+
+const html = glob.sync(`${PATHS.src}/html/*.html`)
+  .map((htmlFile) => {
+    return new HtmlWebpackPlugin({
+      filename: path.basename(htmlFile),
+      template: htmlFile,
+      favicon: 'src/images/favicon.ico',
+      inject: false,
+    });
+  });
 
 const cssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'css/styles.css',
@@ -284,8 +295,9 @@ const configuration = {
     hot: true,
     compress: true,
     contentBase: false,
-    // contentBase: 'build',
+    // contentBase: 'images',
     // contentBase: `${PATHS.dist}`,
+    // contentBase: `${baseWebpackConfig.externals.paths.dist}`,
     publicPath: '/',
     historyApiFallback: true,
   },
