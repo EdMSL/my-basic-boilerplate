@@ -206,6 +206,16 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        options: {
+          extract: true,
+          spriteFilename: 'images/sprite.svg',
+          publicPath: '/',
+          symbolId: '[name]',
+        },
+      },
     ],
   },
   plugins,
