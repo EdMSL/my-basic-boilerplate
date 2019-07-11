@@ -11,6 +11,7 @@ const imageminOptipng = require('imagemin-optipng');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const baseWebpackConfig = require('./webpack.base.config');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const CssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'css/styles.css',
@@ -55,6 +56,10 @@ const ImageminPluginLossless = new ImageminWebpack({
     }
 
     if (/decoration/.test(sourcePath)) {
+      return false;
+    }
+
+    if (/icons/.test(sourcePath)) {
       return false;
     }
 
@@ -113,6 +118,10 @@ const ImageminPluginLossy = new ImageminWebpack({
       return false;
     }
 
+    if (/icons/.test(sourcePath)) {
+      return false;
+    }
+
     return true;
   },
 });
@@ -141,6 +150,7 @@ const ImageminWebpPlugin = new ImageminWebpWebpackPlugin({
 const plugins = [
   new CleanWebpackPlugin(),
   CssExtractPlugin,
+  new SpriteLoaderPlugin(),
   ImageminWebpPlugin,
   ImageminPluginLossless,
   ImageminPluginLossy,
@@ -173,7 +183,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -189,6 +199,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                   return `../${context}/decoration/${url}`;
                 }
 
+                if (/icons/.test(resourcePath)) {
+                  return `../${context}/icons/${url}`;
+                }
+
                 return `${context}/${url}`;
               },
               outputPath: (url, resourcePath, context) => {
@@ -200,6 +214,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                   return `${context}/decoration/${url}`;
                 }
 
+                if (/icons/.test(resourcePath)) {
+                  return `${context}/icons/${url}`;
+                }
+
                 return `${context}/${url}`;
               },
             },
@@ -208,13 +226,54 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-        options: {
-          extract: true,
-          spriteFilename: 'images/sprite.svg',
-          publicPath: '/',
-          symbolId: '[name]',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              context: 'images',
+              publicPath: (url, resourcePath, context) => {
+                if (/content/.test(resourcePath)) {
+                  return `${context}/content/${url}`;
+                }
+
+                if (/decoration/.test(resourcePath)) {
+                  return `../${context}/decoration/${url}`;
+                }
+
+                if (/icons/.test(resourcePath)) {
+                  return `../${context}/icons/${url}`;
+                }
+
+                return `${context}/${url}`;
+              },
+              outputPath: (url, resourcePath, context) => {
+                if (/content/.test(resourcePath)) {
+                  return `${context}/content/${url}`;
+                }
+
+                if (/decoration/.test(resourcePath)) {
+                  return `${context}/decoration/${url}`;
+                }
+
+                if (/icons/.test(resourcePath)) {
+                  return `${context}/icons/${url}`;
+                }
+
+                return `${context}/${url}`;
+              },
+            },
+          },
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: 'images/sprite.svg',
+              publicPath: '/',
+              symbolId: '[name]',
+            },
+          },
+        ],
       },
     ],
   },

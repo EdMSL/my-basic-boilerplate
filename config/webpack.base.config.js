@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -33,6 +32,9 @@ const copyContentImages = new CopyWebpackPlugin([
     from: `${PATHS.src}/images/content/*`,
     to: 'images/content/[name].[ext]',
   },
+]);
+
+const copyIconsImages = new CopyWebpackPlugin([
   {
     from: `${PATHS.src}/images/icons/*`,
     to: 'images/icons/[name].[ext]',
@@ -45,7 +47,7 @@ const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
   ...htmlPlugin,
   copyContentImages,
-  new SpriteLoaderPlugin(),
+  // copyIconsImages,
 ];
 
 const configuration = {
