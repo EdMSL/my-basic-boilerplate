@@ -10,8 +10,8 @@ const imageminPngquant = require('imagemin-pngquant');
 const imageminOptipng = require('imagemin-optipng');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const CssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'css/styles.css',
@@ -147,10 +147,21 @@ const ImageminWebpPlugin = new ImageminWebpWebpackPlugin({
   strict: true,
 });
 
+const SVGSpritePlugin = new SVGSpritemapPlugin([
+  `${baseWebpackConfig.externals.paths.src}/images/icons/**/*.svg`,
+], {
+  output: {
+    filename: 'images/sprite.svg',
+    chunk: {
+      keep: false,
+    },
+  },
+});
+
 const plugins = [
   new CleanWebpackPlugin(),
   CssExtractPlugin,
-  new SpriteLoaderPlugin(),
+  SVGSpritePlugin,
   ImageminWebpPlugin,
   ImageminPluginLossless,
   ImageminPluginLossy,
@@ -262,15 +273,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
 
                 return `${context}/${url}`;
               },
-            },
-          },
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              extract: true,
-              spriteFilename: 'images/sprite.svg',
-              publicPath: '/',
-              symbolId: '[name]',
             },
           },
         ],

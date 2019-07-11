@@ -34,20 +34,12 @@ const copyContentImages = new CopyWebpackPlugin([
   },
 ]);
 
-const copyIconsImages = new CopyWebpackPlugin([
-  {
-    from: `${PATHS.src}/images/icons/*`,
-    to: 'images/icons/[name].[ext]',
-  },
-]);
-
 const htmlPlugin = generateHtmlPlugins(`${PATHS.src}/html`);
 
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
   ...htmlPlugin,
   copyContentImages,
-  // copyIconsImages,
 ];
 
 const configuration = {
