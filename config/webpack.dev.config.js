@@ -15,6 +15,9 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
   output: {
     filename: 'images/sprite.svg',
   },
+  sprite: {
+    prefix: false,
+  },
 });
 
 const plugins = [

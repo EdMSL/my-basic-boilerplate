@@ -63,6 +63,10 @@ const ImageminPluginLossless = new ImageminWebpack({
       return false;
     }
 
+    if (/sprite/.test(sourcePath)) {
+      return false;
+    }
+
     return true;
   },
 });
@@ -122,6 +126,10 @@ const ImageminPluginLossy = new ImageminWebpack({
       return false;
     }
 
+    if (/sprite/.test(sourcePath)) {
+      return false;
+    }
+
     return true;
   },
 });
@@ -153,7 +161,19 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
   output: {
     filename: 'images/sprite.svg',
     chunk: {
-      keep: false,
+      keep: true,
+    },
+    svg4everybody: false,
+    // svgo: false,
+    svgo: {
+      removeComments: true,
+      removeXMLProcInst: true,
+    },
+  },
+  sprite: {
+    prefix: false,
+    generate: {
+      title: false,
     },
   },
 });
