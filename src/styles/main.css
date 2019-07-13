@@ -51,6 +51,8 @@ p {
   /* fdf */
 
   color: rgb(0, 255, 85);
+  font-size: 16px;;
+  /* font-size: 1rem; */
 }
 
 p::after {
@@ -66,9 +68,36 @@ p::after {
 }
 
 .svg_sprite {
-  fill: #35b6f1;
+  width: calc(100%);
+  fill: #35b6f1 !important;
 }
 
 .svg_sprite:hover {
   fill: #35f15e;
+}
+
+.block1 {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  padding: 1px 1px;
+
+  background-image: linear-gradient(0.24turn, #ff0000, 10.55%, #0000ff);
+  border-radius: 50%;
+
+  -o-animation: 0ms;
+  animation: anim-round 0.52s linear;
+  animation-fill-mode: inherit;
+  animation-iteration-count: infinite;
+}
+
+@keyframes anim-round {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

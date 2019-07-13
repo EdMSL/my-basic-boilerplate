@@ -12,7 +12,6 @@ module.exports = {
       'severity': 'warning',
       'message': 'No empty rule blocks.',
     }],
-    'color-no-invalid-hex': true,
     'color-named': ['never', {
       'severity': 'warning',
       'message': 'No named (web) colors.',
@@ -31,39 +30,39 @@ module.exports = {
     'comment-empty-line-before': ['always', {
       'severity': 'warning',
     }],
-    'declaration-block-no-duplicate-properties': true,
     'declaration-empty-line-before': ['never', {
       'except': ['after-comment'],
       'ignore': ['after-declaration'],
     }],
+    'declaration-no-important': [true, {
+      'severity': 'warning',
+    }],
+    'function-calc-no-invalid': true,
+    'function-url-no-scheme-relative': true,
+    'number-leading-zero': ['always', {
+      'severity': 'warning',
+      'message': 'Missing leading zero.'
+    }],
+    'number-max-precision': [0, {
+      'severity': 'warning',
+      'ignoreUnits': /^(?!px).*$/,
+      'message': 'Value in px mast be integer number.',
+    }],
+    'property-no-vendor-prefix': [true, {
+      'severity': 'warning',
+      'message': 'Not needed with autoprefixer',
+    }],
+    'time-min-milliseconds': [200, {
+      'severity': 'warning',
+    }],
+    'shorthand-property-no-redundant-values': [true, {
+      'severity': 'warning',
+    }],
+    'value-no-vendor-prefix': [true, {
+      'severity': 'warning',
+      'message': 'Not needed with autoprefixer',
+    }],
     'rule-empty-line-before': 'always',
-    // 'font-family-no-duplicate-names': true,
-    // 'font-family-no-missing-generic-family-keyword': [true, {
-    //   'message': 'Missing generic-family',
-    // }],
-    // 'function-calc-no-invalid': true,
-    // 'function-linear-gradient-no-nonstandard-direction': true,
-    // 'media-feature-name-no-unknown': true,
-    // 'no-duplicate-at-import-rules': true,
-    // 'no-duplicate-selectors': true,
-    // 'no-extra-semicolons': [true, {
-    //   'message': 'Dublicated semicolon',
-    // }],
-    // 'no-invalid-double-slash-comments': true,
-    // 'number-leading-zero': ['always', {
-    //   'severity': 'warning',
-    //   'message': 'Missing leading zero.'
-    // }],
-    // 'number-max-precision': [1, {
-    //   'severity': 'warning',
-    //   'ignoreUnits': ['%', 'em', 'rem'],
-    // }],
-    // 'property-no-unknown': true,
-    // 'selector-pseudo-class-no-unknown': true,
-    // 'selector-pseudo-element-no-unknown': true,
-    // 'selector-type-no-unknown': true,
-    // 'string-no-newline': true,
-    // 'unit-no-unknown': true,
     'order/order': [
       'declarations',
       {
