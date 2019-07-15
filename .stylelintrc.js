@@ -8,6 +8,7 @@ module.exports = {
   ],
   rules: {
     'at-rule-no-unknown': true,
+    'at-rule-no-vendor-prefix': true,
     'block-no-empty': [true, {
       'severity': 'warning',
       'message': 'No empty rule blocks.',
@@ -39,6 +40,7 @@ module.exports = {
     }],
     'function-calc-no-invalid': true,
     'function-url-no-scheme-relative': true,
+    'media-feature-name-no-vendor-prefix': true,
     'number-leading-zero': ['always', {
       'severity': 'warning',
       'message': 'Missing leading zero.'
@@ -48,6 +50,7 @@ module.exports = {
       'ignoreUnits': /^(?!px).*$/,
       'message': 'Value in px mast be integer number.',
     }],
+    'no-unknown-animations': true,
     'property-no-vendor-prefix': [true, {
       'severity': 'warning',
       'message': 'Not needed with autoprefixer',
@@ -62,7 +65,13 @@ module.exports = {
       'severity': 'warning',
       'message': 'Not needed with autoprefixer',
     }],
-    'rule-empty-line-before': 'always',
+    'rule-empty-line-before': ['always', {
+      'ignore': ['first-nested'],
+    }],
+    'selector-max-compound-selectors': [2, {
+      'severity': 'warning',
+    }],
+    'selector-max-universal': 1,
     'order/order': [
       'declarations',
       {

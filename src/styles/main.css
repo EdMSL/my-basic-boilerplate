@@ -35,6 +35,10 @@
   background-image: url("~$images/decoration/test.jpg");
 }
 
+.block > span {
+  color: rgb(158, 49, 49);
+}
+
 h1 {
   position: absolute;
   font-family: "Open Sans", serif;
@@ -91,8 +95,17 @@ p::after {
   animation-iteration-count: infinite;
 }
 
-@keyframes anim-round {
+.fff span {
+  color: #000555;
+}
 
+a {
+  p {
+    color: #555555;
+  }
+}
+
+@keyframes anim-round {
   0% {
     transform: rotate(0deg);
   }
