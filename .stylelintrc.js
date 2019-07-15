@@ -38,8 +38,11 @@ module.exports = {
     'declaration-no-important': [true, {
       'severity': 'warning',
     }],
+    'font-family-name-quotes': 'always-unless-keyword',
+    'font-weight-notation': 'numeric',
     'function-calc-no-invalid': true,
     'function-url-no-scheme-relative': true,
+    'function-url-quotes': 'always',
     'media-feature-name-no-vendor-prefix': true,
     'number-leading-zero': ['always', {
       'severity': 'warning',
@@ -54,6 +57,9 @@ module.exports = {
     'property-no-vendor-prefix': [true, {
       'severity': 'warning',
       'message': 'Not needed with autoprefixer',
+    }],
+    'string-quotes': ['double', {
+      'severity': 'warning',
     }],
     'time-min-milliseconds': [200, {
       'severity': 'warning',
@@ -72,6 +78,7 @@ module.exports = {
       'severity': 'warning',
     }],
     'selector-max-universal': 1,
+    'value-keyword-case': 'lower',
     'order/order': [
       'declarations',
       {
