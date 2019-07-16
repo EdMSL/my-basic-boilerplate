@@ -43,6 +43,7 @@ module.exports = {
     'function-calc-no-invalid': true,
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
+    'max-line-length': 80,
     'media-feature-name-no-vendor-prefix': true,
     'number-leading-zero': ['always', {
       'severity': 'warning',
