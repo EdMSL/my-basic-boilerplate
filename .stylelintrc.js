@@ -28,12 +28,11 @@ module.exports = {
       'message': 'No empty comment',
       'severity': 'warning',
     }],
-    'comment-empty-line-before': ['always', {
+    'comment-empty-line-before': ['never', {
       'severity': 'warning',
     }],
     'declaration-empty-line-before': ['never', {
-      'except': ['after-comment'],
-      'ignore': ['after-declaration'],
+      'ignore': ['after-comment', 'after-declaration'],
     }],
     'declaration-no-important': [true, {
       'severity': 'warning',
@@ -81,27 +80,32 @@ module.exports = {
     'selector-max-universal': 1,
     'value-keyword-case': 'lower',
     'order/order': [
+      {
+        type: 'at-rule',
+        name: 'include'
+      },
       'declarations',
+      'dollar-variables',
       {
-        'type': 'at-rule',
-        'name': 'media'
+        type: 'rule',
+        selector: '^&::(before|after)'
       },
       {
-        'type': 'rule',
-        'selector': '^&::(before|after)'
+        type: 'rule',
+        selector: '^&:\\w'
       },
       {
-        'type': 'rule',
-        'selector': '^&:\\w'
+        type: 'rule',
+        selector: '^&_'
       },
       {
-        'type': 'rule',
-        'selector': '^&_'
+        type: 'rule',
+        selector: '^.'
       },
       {
-        'type': 'rule',
-        'selector': '^.'
-      }
+        type: 'at-rule',
+        hasBlock: true
+      },
     ],
     'order/properties-order': [
       {
