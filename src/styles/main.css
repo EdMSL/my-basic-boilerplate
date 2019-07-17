@@ -69,6 +69,7 @@ p {
   color: rgb(0, 255, 85);
   font-size: 16px;
   font-weight: 400;
+
   /* font-size: 1rem; */
   font-style: italic;
 }
@@ -100,7 +101,6 @@ p {
     );
   border-radius: 50%;
 
-  -o-animation: 0ms;
   animation: anim-round 0.52s linear;
   animation-fill-mode: inherit;
   animation-iteration-count: infinite;

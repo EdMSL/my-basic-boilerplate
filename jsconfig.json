@@ -12,13 +12,13 @@
     "baseUrl": ".",
     "paths": {
       "$root/*": [ "src/*" ],
-      "$components/*": [ "src/components/*" ],
+      "$js/*": [ "src/js/*" ],
       "$styles/*": [ "src/styles/*" ],
       "$images/*": [ "src/images/*" ],
     }
   },
   "include": [
-    "./src/**/*",
+    "./src/**/*", "src/js/paths.js",
   ],
   "exclude": ["node_modules", "./build/**/*"]
 }

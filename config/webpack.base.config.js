@@ -56,7 +56,7 @@ const configuration = {
   resolve: {
     alias: {
       $root: path.resolve(__dirname, `${PATHS.src}/`),
-      $components: path.resolve(__dirname, `${PATHS.src}/components/`),
+      $js: path.resolve(__dirname, `${PATHS.src}/js/`),
       $styles: path.resolve(__dirname, `${PATHS.src}/styles/`),
       $images: path.resolve(__dirname, `${PATHS.src}/images/`),
     },

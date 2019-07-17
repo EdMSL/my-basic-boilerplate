@@ -2,12 +2,20 @@ module.exports = {
   extends: 'stylelint-config-standard',
   plugins: [
     'stylelint-order',
+    'stylelint-scss',
   ],
   ignoreFiles: [
     'build/**/*'
   ],
   rules: {
-    'at-rule-no-unknown': true,
+    'at-rule-no-unknown': [true, {
+      ignoreAtRules: [
+        /mixin/,
+        /include/,
+        /function/,
+        /return/,
+      ],
+    }],
     'at-rule-no-vendor-prefix': true,
     'block-no-empty': [true, {
       'severity': 'warning',
@@ -79,6 +87,7 @@ module.exports = {
     }],
     'selector-max-universal': 1,
     'value-keyword-case': 'lower',
+    // 'scss/dollar-variable-pattern': /[a-z]*_color/,
     'order/order': [
       {
         type: 'at-rule',

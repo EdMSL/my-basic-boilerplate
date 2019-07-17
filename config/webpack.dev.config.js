@@ -1,7 +1,10 @@
+import { sassResources } from '../src/js/paths';
+
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
+
 
 const sourceMaps = new webpack.SourceMapDevToolPlugin({
   include: 'css',
@@ -44,6 +47,34 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             loader: 'resolve-url-loader',
             options: {
               sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              sourceMap: true,
+              resources: sassResources,
             },
           },
         ],
