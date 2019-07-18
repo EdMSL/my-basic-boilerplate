@@ -214,6 +214,29 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         ],
       },
       {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              sourceMap: true,
+              resources: `${baseWebpackConfig.externals.paths.src}/styles/resources/**/*.scss`,
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           {

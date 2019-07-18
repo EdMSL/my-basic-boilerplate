@@ -1,5 +1,3 @@
-import { sassResources } from '../src/js/paths';
-
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
@@ -74,7 +72,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             loader: 'sass-resources-loader',
             options: {
               sourceMap: true,
-              resources: sassResources,
+              resources: `${baseWebpackConfig.externals.paths.src}/styles/resources/**/*.scss`,
             },
           },
         ],
