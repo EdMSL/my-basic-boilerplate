@@ -87,6 +87,7 @@ module.exports = {
     }],
     'selector-max-universal': 1,
     'value-keyword-case': 'lower',
+    'scss/dollar-variable-colon-newline-after': 'always-multi-line',
     // 'scss/dollar-variable-pattern': /[a-z]*_color/,
     'order/order': [
       {
