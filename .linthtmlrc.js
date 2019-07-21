@@ -1,5 +1,5 @@
 module.exports = {
-  "attr-name-style": "dash",
+  // "attr-name-style": "dash",
   "attr-no-unsafe-char": true,
   "attr-quote-style": "double",
   "class-no-dup": true,

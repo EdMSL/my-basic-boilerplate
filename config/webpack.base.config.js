@@ -71,7 +71,7 @@ const configuration = {
         enforce: 'pre',
         use: [
           'source-map-loader',
-          'babel-loader',
+          // 'babel-loader',
         ],
       },
       {

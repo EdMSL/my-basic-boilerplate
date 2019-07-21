@@ -135,12 +135,12 @@ module.exports = {
         groupName: "block model",
         emptyLineBefore: "always",
         properties: [
-          'display',
           'flex',
           'flex-grow',
           'flex-shrink',
           'flex-basis',
           'flex-flow',
+          'display',
           'flex-direction',
           'flex-wrap',
           'justify-content',

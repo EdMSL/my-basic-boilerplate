@@ -93,7 +93,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     compress: true,
     open: true,
-    contentBase: `${baseWebpackConfig.externals.paths.src}`,
+    contentBase: `${baseWebpackConfig.externals.paths.src}/html`, // need for reload browser after compilation HTML changes.
     watchContentBase: true,
     publicPath: '/',
     historyApiFallback: true,
