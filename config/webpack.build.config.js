@@ -59,10 +59,6 @@ const ImageminPluginLossless = new ImageminWebpack({
       return false;
     }
 
-    if (/icons/.test(sourcePath)) {
-      return false;
-    }
-
     if (/sprite/.test(sourcePath)) {
       return false;
     }
@@ -122,10 +118,6 @@ const ImageminPluginLossy = new ImageminWebpack({
       return false;
     }
 
-    if (/icons/.test(sourcePath)) {
-      return false;
-    }
-
     if (/sprite/.test(sourcePath)) {
       return false;
     }
@@ -156,7 +148,7 @@ const ImageminWebpPlugin = new ImageminWebpWebpackPlugin({
 });
 
 const SVGSpritePlugin = new SVGSpritemapPlugin([
-  `${baseWebpackConfig.externals.paths.src}/images/icons/**/*.svg`,
+  `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
 ], {
   output: {
     filename: 'images/sprite.svg',
@@ -164,7 +156,6 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
       keep: true,
     },
     svg4everybody: false,
-    // svgo: false,
     svgo: {
       removeComments: true,
       removeXMLProcInst: true,
@@ -181,10 +172,10 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
 const plugins = [
   new CleanWebpackPlugin(),
   CssExtractPlugin,
-  SVGSpritePlugin,
   ImageminWebpPlugin,
   ImageminPluginLossless,
   ImageminPluginLossy,
+  SVGSpritePlugin,
 ];
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
@@ -230,14 +221,14 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
           {
             loader: 'sass-resources-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
               resources: `${baseWebpackConfig.externals.paths.src}/styles/resources/**/*.scss`,
             },
           },
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -253,10 +244,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                   return `../${context}/decoration/${url}`;
                 }
 
-                if (/icons/.test(resourcePath)) {
-                  return `../${context}/icons/${url}`;
-                }
-
                 return `${context}/${url}`;
               },
               outputPath: (url, resourcePath, context) => {
@@ -266,52 +253,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
 
                 if (/decoration/.test(resourcePath)) {
                   return `${context}/decoration/${url}`;
-                }
-
-                if (/icons/.test(resourcePath)) {
-                  return `${context}/icons/${url}`;
-                }
-
-                return `${context}/${url}`;
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              context: 'images',
-              publicPath: (url, resourcePath, context) => {
-                if (/content/.test(resourcePath)) {
-                  return `${context}/content/${url}`;
-                }
-
-                if (/decoration/.test(resourcePath)) {
-                  return `../${context}/decoration/${url}`;
-                }
-
-                if (/icons/.test(resourcePath)) {
-                  return `../${context}/icons/${url}`;
-                }
-
-                return `${context}/${url}`;
-              },
-              outputPath: (url, resourcePath, context) => {
-                if (/content/.test(resourcePath)) {
-                  return `${context}/content/${url}`;
-                }
-
-                if (/decoration/.test(resourcePath)) {
-                  return `${context}/decoration/${url}`;
-                }
-
-                if (/icons/.test(resourcePath)) {
-                  return `${context}/icons/${url}`;
                 }
 
                 return `${context}/${url}`;

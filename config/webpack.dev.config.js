@@ -11,7 +11,7 @@ const sourceMaps = new webpack.SourceMapDevToolPlugin({
 });
 
 const SVGSpritePlugin = new SVGSpritemapPlugin([
-  `${baseWebpackConfig.externals.paths.src}/images/icons/**/*.svg`,
+  `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
 ], {
   output: {
     filename: 'images/sprite.svg',
