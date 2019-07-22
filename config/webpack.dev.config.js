@@ -5,7 +5,7 @@ const baseWebpackConfig = require('./webpack.base.config');
 
 
 const sourceMaps = new webpack.SourceMapDevToolPlugin({
-  include: 'css',
+  include: ['css', 'js', 'scss'],
   filename: '[file].map',
   noSources: false,
 });
@@ -87,6 +87,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       },
     ],
   },
+  // devtool: false,
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 8081,
