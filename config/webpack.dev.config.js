@@ -22,7 +22,7 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
 });
 
 const plugins = [
-  ...[sourceMaps],
+  // ...[sourceMaps],
   SVGSpritePlugin,
 ];
 

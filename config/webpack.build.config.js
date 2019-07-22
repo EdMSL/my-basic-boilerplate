@@ -16,6 +16,7 @@ const baseWebpackConfig = require('./webpack.base.config');
 const CssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'css/styles.css',
   chunkFilename: 'css/[id].css',
+  minimize: false,
 });
 
 const ImageminPluginLossless = new ImageminWebpack({
@@ -212,7 +213,16 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
             loader: 'css-loader',
             options: {
               sourceMap: false,
-              importLoaders: 2,
+              importLoaders: 3,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+              config: {
+                path: `${baseWebpackConfig.externals.paths.conf}/postcss.config.js`,
+              },
             },
           },
           {
