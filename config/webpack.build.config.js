@@ -16,7 +16,16 @@ const baseWebpackConfig = require('./webpack.base.config');
 const CssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'css/styles.css',
   chunkFilename: 'css/[id].css',
-  minimize: false,
+});
+
+const progressPlugin = new webpack.ProgressPlugin({
+  entries: true,
+  modules: true,
+  modulesCount: 100,
+  profile: true,
+  handler: (percentage, message) => {
+    console.info(percentage, message);
+  },
 });
 
 const ImageminPluginLossless = new ImageminWebpack({
@@ -172,6 +181,7 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
 
 const plugins = [
   new CleanWebpackPlugin(),
+  progressPlugin,
   CssExtractPlugin,
   ImageminWebpPlugin,
   ImageminPluginLossless,
@@ -184,29 +194,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: false,
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: false,
-              config: {
-                path: `${baseWebpackConfig.externals.paths.conf}/postcss.config.js`,
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
+        test: /\.(scss|sass|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {

@@ -10,6 +10,5 @@
   modalOpenBtn.addEventListener('click', function () {
     modal.classList.add('modal--active');
   });
-
   modalCloseBtn.addEventListener('click', closeModal);
 }());
