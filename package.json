@@ -26,15 +26,11 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --config=./config/webpack.dev.config.js --inline",
-    "build": "cross-env NODE_ENV=production webpack --env production --config=./config/webpack.build.config.js",
+    "build": "cross-env NODE_ENV=production webpack --env production --config=./config/webpack.build.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@babel/core": "~7.4.5",
-    "@babel/preset-env": "~7.4.5",
     "autoprefixer": "~9.6.0",
-    "babel-eslint": "~10.0.2",
-    "babel-loader": "~8.0.6",
     "clean-webpack-plugin": "~3.0.0",
     "copy-webpack-plugin": "~5.0.3",
     "cross-env": "~5.2.0",
@@ -42,9 +38,7 @@
     "css-mqpacker": "~7.0.0",
     "cssnano": "~4.1.10",
     "eslint": "~6.0.1",
-    "eslint-config-airbnb-base": "~13.1.0",
     "eslint-import-resolver-webpack": "~0.11.1",
-    "eslint-plugin-babel": "~5.3.0",
     "eslint-plugin-import": "~2.18.0",
     "file-loader": "~4.0.0",
     "html-webpack-plugin": "~3.2.0",

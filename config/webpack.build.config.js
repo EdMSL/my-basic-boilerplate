@@ -18,16 +18,6 @@ const CssExtractPlugin = new MiniCssExtractPlugin({
   chunkFilename: 'css/[id].css',
 });
 
-const progressPlugin = new webpack.ProgressPlugin({
-  entries: true,
-  modules: true,
-  modulesCount: 100,
-  profile: true,
-  handler: (percentage, message) => {
-    console.info(percentage, message);
-  },
-});
-
 const ImageminPluginLossless = new ImageminWebpack({
   // When cache = true, use "rm -rf ./node_modules/.cache/imagemin-webpack" if change options for imagemin plugin!
   test: /.(jpe?g|png|gif|svg)$/i,
@@ -181,7 +171,6 @@ const SVGSpritePlugin = new SVGSpritemapPlugin([
 
 const plugins = [
   new CleanWebpackPlugin(),
-  progressPlugin,
   CssExtractPlugin,
   ImageminWebpPlugin,
   ImageminPluginLossless,

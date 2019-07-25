@@ -11,4 +11,4 @@
     modal.classList.add('modal--active');
   });
   modalCloseBtn.addEventListener('click', closeModal);
-}());
+})();
