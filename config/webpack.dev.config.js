@@ -31,6 +31,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: [
+          // 'source-map-loader',
+        ],
+      },
+      {
         test: /\.(scss|sass|css)$/,
         use: [
           {
@@ -79,11 +86,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchContentBase: true,
     publicPath: '/',
     historyApiFallback: true,
+    overlay: {
+      warnings: false,
+      errors: true,
+    },
   },
   watchOptions: {
     ignored: /node_modules/,
   },
   plugins,
 });
-
 module.exports = devWebpackConfig;
+
+//TODO Во время компиляции игнорируется ошибка в js.

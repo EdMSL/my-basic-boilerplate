@@ -183,6 +183,13 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: [
+          'source-map-loader',
+        ],
+      },
+      {
         test: /\.(scss|sass|css)$/,
         use: [
           MiniCssExtractPlugin.loader,

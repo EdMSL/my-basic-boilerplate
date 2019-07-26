@@ -66,13 +66,6 @@ const configuration = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: [
-          'source-map-loader',
-        ],
-      },
-      {
         test: /\.(eot|ttf|woff|woff2|otf)$/,
         use: {
           loader: 'file-loader',

@@ -21,8 +21,6 @@ input[type="radio"].visually-hidden {
   box-sizing: content-box;
 }
 
-// comment
-
 .modal {
   position: fixed;
   top: 0;
@@ -66,7 +64,7 @@ input[type="radio"].visually-hidden {
 
 @media (min-width: $tablet-width) {
   .modal__body {
-    background-color: #381c1c;
+    background-color: #a7ec58;
   }
 }
 
