@@ -22,7 +22,7 @@ module.exports = {
   "line-no-trailing-whitespace": true,
   "line-max-len": 100,
   "link-req-noopener": true,
-  "spec-char-escape": true, // false for React
+  "spec-char-escape": true,
   "tag-close": true,
   "tag-name-match": true,
   "tag-self-close": "never",
