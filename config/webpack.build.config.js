@@ -2,180 +2,20 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ImageminWebpack = require('imagemin-webpack');
-const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-const imageminJpegtran = require('imagemin-jpegtran');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminOptipng = require('imagemin-optipng');
-const imageminGifsicle = require('imagemin-gifsicle');
-const imageminSvgo = require('imagemin-svgo');
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const CssExtractPlugin = require('./webpack/plugins/mini-css-extract-plugin');
+const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
+const ImageminWebpPlugin = require('./webpack/plugins/imagemin-webp-webpack-plugin');
+const ImageminPluginLossless = require('./webpack/plugins/imagemin-webpack-lossless');
+const ImageminPluginLossy = require('./webpack/plugins/imagemin-webpack-lossy');
 const baseWebpackConfig = require('./webpack.base.config');
-
-const CssExtractPlugin = new MiniCssExtractPlugin({
-  filename: 'css/styles.css',
-  chunkFilename: 'css/[id].css',
-});
-
-const ImageminPluginLossless = new ImageminWebpack({
-  // When cache = true, use "rm -rf ./node_modules/.cache/imagemin-webpack" if change options for imagemin plugin!
-  test: /.(jpe?g|png|gif|svg)$/i,
-  cache: false,
-  bail: false,
-  loader: false,
-  name: 'images/content/[name].[ext]',
-  imageminOptions: {
-    plugins: [
-      imageminJpegtran({
-        progressive: true, /* default false */
-        arithmetic: false, /* default false */
-      }),
-      imageminOptipng({
-        optimizationLevel: 3, /* 0...7 default 3 */
-        bitDepthReduction: true, /* default true */
-        colorTypeReduction: true, /* default true */
-        paletteReduction: true, /* default true */
-      }),
-      imageminSvgo({
-        plugins: [
-          { removeComments: true },
-          { removeXMLProcInst: true },
-        ],
-      }),
-      imageminGifsicle({
-        interlaced: true, /* default false */
-        optimizationLevel: 1, /* 1...3 default 1 */
-        colors: 256, /* 2...256, max colors in img */
-      }),
-    ],
-  },
-  filter: (source, sourcePath) => {
-    if (/png\.webp/.test(sourcePath)) {
-      return false;
-    }
-
-    if (/decoration/.test(sourcePath)) {
-      return false;
-    }
-
-    if (/sprite/.test(sourcePath)) {
-      return false;
-    }
-
-    return true;
-  },
-});
-
-const ImageminPluginLossy = new ImageminWebpack({
-  // When cache = true, use "rm -rf ./node_modules/.cache/imagemin-webpack" if change options for imagemin plugin!
-  test: /.(jpe?g|png|gif|svg)$/i,
-  cache: false,
-  bail: false,
-  loader: false,
-  name: 'images/decoration/[name].[ext]',
-  imageminOptions: {
-    plugins: [
-      imageminMozjpeg({
-        quality: 90,
-        progressive: true,
-        fastCrush: false, /* default false */
-        dcScanOpt: 1, /* 1...3 default 1 */
-        trellis: true, /* default true */
-        tune: 'hvs-psnr', /* Trellis optimization method. Available: psnr, hvs-psnr(default), ssim, ms-ssim */
-        trellisDC: true, /* default true */
-        overshoot: true, /* default true */
-        arithmetic: false, /* default false */
-        dct: 'int', /* Available: int(default), fast, float */
-      }),
-      imageminPngquant({
-        quality: [0.3, 0.5],
-        speed: 3, /* 1...11 default 3 */
-        strip: false, /* default false */
-        dithering: 1, /* 0...1 default 1 */
-        posterize: 0, /* default 0 */
-        verbose: false, /* default false */
-      }),
-      imageminSvgo({
-        plugins: [
-          { removeComments: true },
-          { removeXMLProcInst: true },
-        ],
-      }),
-      imageminGifsicle({
-        interlaced: true, /* default false */
-        optimizationLevel: 1, /* 1...3 default 1 */
-        colors: 256, /* 2...256, max colors in img */
-      }),
-    ],
-  },
-  filter: (source, sourcePath) => {
-    if (/png\.webp/.test(sourcePath)) {
-      return false;
-    }
-
-    if (/content/.test(sourcePath)) {
-      return false;
-    }
-
-    if (/sprite/.test(sourcePath)) {
-      return false;
-    }
-
-    return true;
-  },
-});
-
-const ImageminWebpPlugin = new ImageminWebpWebpackPlugin({
-  config: [{
-    test: /\.(jpe?g|png)/,
-    options: {
-      preset: 'default', /* default, photo, picture, drawing, icon, text */
-      quality: 85,
-      alphaQuality: 90,
-      method: 4, /* 0...6 default 4 */
-      sns: 80, /* 0...100 default 80 */
-      filter: 80, /* 0...100 */
-      autoFilter: true, /* default true */
-      sharpness: 1, /* 0...7 default 0 */
-      verbose: false, /* default false */
-    },
-  }],
-  overrideExtension: false,
-  detailedLogs: true,
-  silent: false,
-  strict: true,
-});
-
-const SVGSpritePlugin = new SVGSpritemapPlugin([
-  `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
-], {
-  output: {
-    filename: 'images/sprite.svg',
-    chunk: {
-      keep: true,
-    },
-    svg4everybody: false,
-    svgo: {
-      removeComments: true,
-      removeXMLProcInst: true,
-    },
-  },
-  sprite: {
-    prefix: false,
-    generate: {
-      title: false,
-    },
-  },
-});
 
 const plugins = [
   new CleanWebpackPlugin(),
-  CssExtractPlugin,
-  ImageminWebpPlugin,
-  ImageminPluginLossless,
-  ImageminPluginLossy,
-  SVGSpritePlugin,
+  CssExtractPlugin(),
+  ImageminWebpPlugin(),
+  ImageminPluginLossless(),
+  ImageminPluginLossy(),
+  SVGSpritePlugin(process.env.NODE_ENV),
 ];
 
 const buildWebpackConfig = merge(baseWebpackConfig, {

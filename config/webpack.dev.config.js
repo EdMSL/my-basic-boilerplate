@@ -1,8 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
-
 
 const sourceMaps = new webpack.SourceMapDevToolPlugin({
   include: ['css', 'js', 'scss'],
@@ -10,20 +9,9 @@ const sourceMaps = new webpack.SourceMapDevToolPlugin({
   noSources: false,
 });
 
-const SVGSpritePlugin = new SVGSpritemapPlugin([
-  `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
-], {
-  output: {
-    filename: 'images/sprite.svg',
-  },
-  sprite: {
-    prefix: false,
-  },
-});
-
 const plugins = [
   // ...[sourceMaps],
-  SVGSpritePlugin,
+  SVGSpritePlugin(process.env.NODE_ENV),
 ];
 
 const devWebpackConfig = merge(baseWebpackConfig, {
