@@ -15,7 +15,7 @@ const plugins = [
   ImageminWebpPlugin(),
   ImageminPluginLossless(),
   ImageminPluginLossy(),
-  SVGSpritePlugin(process.env.NODE_ENV),
+  SVGSpritePlugin(process.env.NODE_ENV, `${baseWebpackConfig.externals.paths.src}/images/sprite`),
 ];
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
@@ -70,10 +70,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
               name: '[name].[ext]',
               context: 'images',
               publicPath: (url, resourcePath, context) => {
-                if (/content/.test(resourcePath)) {
-                  return `${context}/content/${url}`;
-                }
-
                 if (/decoration/.test(resourcePath)) {
                   return `../${context}/decoration/${url}`;
                 }
@@ -81,10 +77,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                 return `${context}/${url}`;
               },
               outputPath: (url, resourcePath, context) => {
-                if (/content/.test(resourcePath)) {
-                  return `${context}/content/${url}`;
-                }
-
                 if (/decoration/.test(resourcePath)) {
                   return `${context}/decoration/${url}`;
                 }

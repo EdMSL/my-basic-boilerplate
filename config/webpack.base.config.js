@@ -1,8 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const copyContentImages = require('./webpack/plugins/copy-content-images');
+const generateHtmlPlugins = require('./webpack/plugins/html-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -10,36 +9,10 @@ const PATHS = {
   conf: path.join(__dirname, './config'),
 };
 
-function generateHtmlPlugins(templateDir) {
-  const templateFiles = fs.readdirSync(templateDir);
-
-  return templateFiles.map((item) => {
-    const fileData = item.split('.');
-    const name = fileData[0];
-    const ext = fileData[1];
-
-    return new HtmlWebpackPlugin({
-      filename: `${name}.html`,
-      template: `${PATHS.src}/html/${name}.${ext}`,
-      favicon: 'src/images/favicon.ico',
-      inject: false,
-    });
-  });
-}
-
-const copyContentImages = new CopyWebpackPlugin([
-  {
-    from: `${PATHS.src}/images/content/*`,
-    to: 'images/content/[name].[ext]',
-  },
-]);
-
-const htmlPlugin = generateHtmlPlugins(`${PATHS.src}/html`);
-
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
-  ...htmlPlugin,
-  copyContentImages,
+  ...generateHtmlPlugins(`${PATHS.src}/html`),
+  copyContentImages(`${PATHS.src}/images/content`),
 ];
 
 const configuration = {

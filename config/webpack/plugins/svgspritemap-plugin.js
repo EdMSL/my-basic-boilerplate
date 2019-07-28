@@ -1,10 +1,9 @@
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const baseWebpackConfig = require('../../webpack.base.config');
 
-module.exports = function(mode) {
+module.exports = function(mode, path) {
   if (mode === 'production') {
     return new SVGSpritemapPlugin([
-      `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
+      `${path}/**/*.svg`,
     ], {
       output: {
         filename: 'images/sprite.svg',
@@ -27,7 +26,7 @@ module.exports = function(mode) {
   }
 
   return new SVGSpritemapPlugin([
-    `${baseWebpackConfig.externals.paths.src}/images/sprite/**/*.svg`,
+    `${path}/**/*.svg`,
   ], {
     output: {
       filename: 'images/sprite.svg',
