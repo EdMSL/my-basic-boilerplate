@@ -1,7 +1,4 @@
 (function () {
-  /**
-  * @param fd
-  */
   var modalOpenBtn = document.querySelector('.button--open');
   var modalCloseBtn = document.querySelector('.button--close');
   var modal = document.querySelector('.modal');

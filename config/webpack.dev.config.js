@@ -11,7 +11,7 @@ const sourceMaps = new webpack.SourceMapDevToolPlugin({
 
 const plugins = [
   // ...[sourceMaps],
-  SVGSpritePlugin(process.env.NODE_ENV),
+  SVGSpritePlugin(process.env.NODE_ENV, `${baseWebpackConfig.externals.paths.src}/images/sprite`),
 ];
 
 const devWebpackConfig = merge(baseWebpackConfig, {
