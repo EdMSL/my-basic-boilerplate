@@ -10,7 +10,7 @@ module.exports = function(mode, path) {
         chunk: {
           keep: true,
         },
-        svg4everybody: false,
+        svg4everybody: true,
         svgo: {
           removeComments: true,
           removeXMLProcInst: true,
@@ -30,6 +30,7 @@ module.exports = function(mode, path) {
   ], {
     output: {
       filename: 'images/sprite.svg',
+      svg4everybody: true,
     },
     sprite: {
       prefix: false,

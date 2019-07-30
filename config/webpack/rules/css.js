@@ -57,7 +57,7 @@ module.exports = function(mode) {
               options: {
                 sourceMap: false,
                 config: {
-                  path: `config/postcss.config.js`,
+                  path: `config/webpack/postcss.config.js`,
                 },
               },
             },

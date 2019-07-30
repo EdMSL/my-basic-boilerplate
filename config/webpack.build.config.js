@@ -1,6 +1,4 @@
-// const webpack = require('webpack');
 const merge = require('webpack-merge');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssExtractPlugin = require('./webpack/plugins/mini-css-extract-plugin');
 const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
