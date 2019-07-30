@@ -1,5 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const css = require('./webpack/rules/css');
+const js = require('./webpack/rules/js');
+const images = require('./webpack/rules/images');
 const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
 
@@ -14,93 +17,34 @@ const plugins = [
   SVGSpritePlugin(process.env.NODE_ENV, `${baseWebpackConfig.externals.paths.src}/images/sprite`),
 ];
 
-const devWebpackConfig = merge(baseWebpackConfig, {
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: [
-          // 'source-map-loader',
-        ],
+const devWebpackConfig = merge([
+  baseWebpackConfig,
+  {
+    mode: 'development',
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+      port: 8081,
+      hot: true,
+      compress: true,
+      open: true,
+      contentBase: `${baseWebpackConfig.externals.paths.src}/html`, // need for reload browser after compilation HTML changes.
+      watchContentBase: true,
+      publicPath: '/',
+      historyApiFallback: true,
+      overlay: {
+        warnings: false,
+        errors: true,
       },
-      {
-        test: /\.(scss|sass|css)$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              importLoaders: 2,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              sourceMap: true,
-              resources: `${baseWebpackConfig.externals.paths.src}/styles/resources/**/*.scss`,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              context: 'images',
-              publicPath: (url, resourcePath, context) => {
-                if (/decoration/.test(resourcePath)) {
-                  return `../${context}/decoration/${url}`;
-                }
-
-                return `${context}/${url}`;
-              },
-              outputPath: (url, resourcePath, context) => {
-                if (/decoration/.test(resourcePath)) {
-                  return `${context}/decoration/${url}`;
-                }
-
-                return `${context}/${url}`;
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    port: 8081,
-    hot: true,
-    compress: true,
-    open: true,
-    contentBase: `${baseWebpackConfig.externals.paths.src}/html`, // need for reload browser after compilation HTML changes.
-    watchContentBase: true,
-    publicPath: '/',
-    historyApiFallback: true,
-    overlay: {
-      warnings: false,
-      errors: true,
     },
+    watchOptions: {
+      ignored: /node_modules/,
+    },
+    plugins,
   },
-  watchOptions: {
-    ignored: /node_modules/,
-  },
-  plugins,
-});
+  css('development'),
+  js(),
+  images(),
+]);
 module.exports = devWebpackConfig;
 
 //TODO Во время компиляции игнорируется ошибка в js.

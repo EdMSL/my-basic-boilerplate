@@ -1,0 +1,79 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = function(mode) {
+  if (mode === 'development') {
+    return {
+      module: {
+        rules: [
+          {
+            test: /\.(scss|sass|css)$/,
+            use: [
+              {
+                loader: 'style-loader',
+              },
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  importLoaders: 2,
+                },
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  sourceMap: true,
+                  resources: `src/styles/resources/**/*.scss`,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    }
+  }
+
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(scss|sass|css)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: false,
+                importLoaders: 3,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: false,
+                config: {
+                  path: `config/postcss.config.js`,
+                },
+              },
+            },
+            {
+              loader: 'sass-loader',
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                sourceMap: false,
+                resources: `src/styles/resources/**/*.scss`,
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
+};
