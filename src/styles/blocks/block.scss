@@ -29,3 +29,9 @@
       $secondary-color 30.55%,
     );
 }
+
+.block__input {
+  &--colored {
+    background-color: rgb(240, 183, 26);
+  }
+}

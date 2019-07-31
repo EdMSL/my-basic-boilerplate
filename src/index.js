@@ -1,3 +1,3 @@
 require('./js/main');
+require('./js/second');
 require('$styles/styles.scss');
-// require('$styles/main.css');
