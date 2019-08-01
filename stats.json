@@ -1,0 +1,362 @@
+{
+  "errors": [
+    "./src/index.js\nModule not found: Error: Can't resolve '$styles/styles.scss' in '/Users/user/Documents/boiler/my-basic-boilerplate/src'\nresolve '$styles/styles.scss' in '/Users/user/Documents/boiler/my-basic-boilerplate/src'\n  Parsed request is a module\n  using description file: /Users/user/Documents/boiler/my-basic-boilerplate/package.json (relative path: ./src)\n    Field 'browser' doesn't contain a valid alias configuration\n    resolve as module\n      /Users/user/Documents/boiler/my-basic-boilerplate/src/node_modules doesn't exist or is not a directory\n      /Users/user/Documents/boiler/node_modules doesn't exist or is not a directory\n      /Users/user/Documents/node_modules doesn't exist or is not a directory\n      /Users/user/node_modules doesn't exist or is not a directory\n      /Users/node_modules doesn't exist or is not a directory\n      /node_modules doesn't exist or is not a directory\n      looking for modules in /Users/user/Documents/boiler/my-basic-boilerplate/node_modules\n        using description file: /Users/user/Documents/boiler/my-basic-boilerplate/package.json (relative path: ./node_modules)\n          Field 'browser' doesn't contain a valid alias configuration\n          using description file: /Users/user/Documents/boiler/my-basic-boilerplate/package.json (relative path: ./node_modules/$styles/styles.scss)\n            no extension\n              Field 'browser' doesn't contain a valid alias configuration\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss doesn't exist\n            .wasm\n              Field 'browser' doesn't contain a valid alias configuration\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.wasm doesn't exist\n            .mjs\n              Field 'browser' doesn't contain a valid alias configuration\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.mjs doesn't exist\n            .js\n              Field 'browser' doesn't contain a valid alias configuration\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.js doesn't exist\n            .json\n              Field 'browser' doesn't contain a valid alias configuration\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.json doesn't exist\n            as directory\n              /Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss doesn't exist\n[/Users/user/Documents/boiler/my-basic-boilerplate/src/node_modules]\n[/Users/user/Documents/boiler/node_modules]\n[/Users/user/Documents/node_modules]\n[/Users/user/node_modules]\n[/Users/node_modules]\n[/node_modules]\n[/Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss]\n[/Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.wasm]\n[/Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.mjs]\n[/Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.js]\n[/Users/user/Documents/boiler/my-basic-boilerplate/node_modules/$styles/styles.scss.json]\n @ ./src/index.js 3:0-30"
+  ],
+  "warnings": [
+    "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/"
+  ],
+  "version": "4.35.0",
+  "hash": "b9e8bac4c83cb0db23f6",
+  "time": 385,
+  "builtAt": 1564625058594,
+  "publicPath": "",
+  "outputPath": "/Users/user/Documents/boiler/my-basic-boilerplate/dist",
+  "assetsByChunkName": {
+    "main": "main.js"
+  },
+  "assets": [
+    {
+      "name": "main.js",
+      "size": 1520,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 729,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "hash": "c487e7cf475f2b8c784b",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 2,
+          "size": 78,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "require('./js/main');\nrequire('./js/second');\nrequire('$styles/styles.scss');\n"
+        },
+        {
+          "id": 1,
+          "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/js/main.js",
+          "name": "./src/js/main.js",
+          "index": 1,
+          "index2": 0,
+          "size": 430,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "cjs require",
+              "userRequest": "./js/main",
+              "loc": "1:0-20"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1,
+          "source": "(function () {\n  var modalOpenBtn = document.querySelector('.button--open');\n  var modalCloseBtn = document.querySelector('.button--close');\n  var modal = document.querySelector('.modal');\n\n  function closeModal() {\n    modal.classList.remove('modal--active');\n  }\n\n  modalOpenBtn.addEventListener('click', function () {\n    modal.classList.add('modal--active');\n  });\n  modalCloseBtn.addEventListener('click', closeModal);\n})();\n"
+        },
+        {
+          "id": 2,
+          "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/js/second.js",
+          "name": "./src/js/second.js",
+          "index": 2,
+          "index2": 1,
+          "size": 221,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "cjs require",
+              "userRequest": "./js/second",
+              "loc": "2:0-22"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1,
+          "source": "(function() {\n  var input = document.querySelector('.block__input');\n\n  function onInputChange() {\n    event.target.classList.toggle('block__input--colored');\n  }\n\n  input.addEventListener('change', onInputChange);\n})();\n"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 2,
+      "size": 78,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0,
+      "source": "require('./js/main');\nrequire('./js/second');\nrequire('$styles/styles.scss');\n"
+    },
+    {
+      "id": 1,
+      "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/js/main.js",
+      "name": "./src/js/main.js",
+      "index": 1,
+      "index2": 0,
+      "size": 430,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "userRequest": "./js/main",
+          "loc": "1:0-20"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1,
+      "source": "(function () {\n  var modalOpenBtn = document.querySelector('.button--open');\n  var modalCloseBtn = document.querySelector('.button--close');\n  var modal = document.querySelector('.modal');\n\n  function closeModal() {\n    modal.classList.remove('modal--active');\n  }\n\n  modalOpenBtn.addEventListener('click', function () {\n    modal.classList.add('modal--active');\n  });\n  modalCloseBtn.addEventListener('click', closeModal);\n})();\n"
+    },
+    {
+      "id": 2,
+      "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/js/second.js",
+      "name": "./src/js/second.js",
+      "index": 2,
+      "index2": 1,
+      "size": 221,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/Users/user/Documents/boiler/my-basic-boilerplate/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "userRequest": "./js/second",
+          "loc": "2:0-22"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1,
+      "source": "(function() {\n  var input = document.querySelector('.block__input');\n\n  function onInputChange() {\n    event.target.classList.toggle('block__input--colored');\n  }\n\n  input.addEventListener('change', onInputChange);\n})();\n"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}

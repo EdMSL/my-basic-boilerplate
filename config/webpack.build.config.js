@@ -26,7 +26,7 @@ const buildWebpackConfig = merge([
     plugins,
   },
   js(),
-  css('production'),
+  css('production', `${baseWebpackConfig.externals.paths.src}/styles/resources`),
   images(),
 ]);
 

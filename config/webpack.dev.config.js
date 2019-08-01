@@ -20,12 +20,10 @@ const devWebpackConfig = merge([
     },
     plugins,
   },
-  css('development'),
+  css('development', `${baseWebpackConfig.externals.paths.src}/styles/resources`),
   js(),
   images(),
   devserver(`${baseWebpackConfig.externals.paths.src}/html`),
 ]);
 
 module.exports = devWebpackConfig;
-
-//TODO Во время компиляции игнорируется ошибка в js.

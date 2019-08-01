@@ -5,7 +5,7 @@ module.exports = function(contentBase) {
       hot: true,
       compress: true,
       open: true,
-      contentBase: contentBase, // need for reload browser after compilation HTML changes.
+      contentBase: contentBase,
       watchContentBase: true,
       publicPath: '/',
       historyApiFallback: true,

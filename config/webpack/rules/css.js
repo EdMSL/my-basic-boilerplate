@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = function(mode) {
+module.exports = function(mode, resourcesPath) {
   if (mode === 'development') {
     return {
       module: {
@@ -28,7 +28,7 @@ module.exports = function(mode) {
                 loader: 'sass-resources-loader',
                 options: {
                   sourceMap: true,
-                  resources: `src/styles/resources/**/*.scss`,
+                  resources: `${resourcesPath}/**/*.scss`,
                 },
               },
             ],
@@ -68,7 +68,7 @@ module.exports = function(mode) {
               loader: 'sass-resources-loader',
               options: {
                 sourceMap: false,
-                resources: `src/styles/resources/**/*.scss`,
+                resources: `${resourcesPath}/**/*.scss`,
               },
             },
           ],

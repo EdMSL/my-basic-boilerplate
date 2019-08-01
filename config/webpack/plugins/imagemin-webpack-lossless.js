@@ -19,7 +19,7 @@ module.exports = function() {
           arithmetic: false, /* default false */
         }),
         imageminOptipng({
-          optimizationLevel: 3, /* 0...7 default 3 */
+          optimizationLevel: 4, /* 0...7 default 3 */
           bitDepthReduction: true, /* default true */
           colorTypeReduction: true, /* default true */
           paletteReduction: true, /* default true */
