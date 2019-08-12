@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 const fonts = require('./webpack/rules/fonts');
-const copyContentImages = require('./webpack/plugins/copy-content-images');
+const copyImages = require('./webpack/plugins/copy-images');
 const generateHtmlPlugins = require('./webpack/plugins/html-webpack-plugin');
 
 const PATHS = {
@@ -14,7 +14,7 @@ const PATHS = {
 const plugins = [
   new webpack.WatchIgnorePlugin(['build']),
   ...generateHtmlPlugins(`${PATHS.src}/html`),
-  copyContentImages(`${PATHS.src}/images/content`),
+  copyImages(`${PATHS.src}/images/content`),
 ];
 
 const configuration = merge([

@@ -6,12 +6,14 @@ module.exports = {
     commonjs: true,
     node: true,
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
   extends: [
-    'eslint:recommended',
+    './config/eslint/best-practices',
+    './config/eslint/error',
+    './config/eslint/es6',
+    './config/eslint/node',
+    './config/eslint/strict',
+    './config/eslint/style',
+    './config/eslint/variables',
   ],
   settings: {
     'import/resolver': {

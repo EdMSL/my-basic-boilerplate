@@ -11,4 +11,9 @@
     modal.classList.add('modal--active');
   });
   modalCloseBtn.addEventListener('click', closeModal);
+  // console.log(sdf);
+  const f = {
+    f: 1,
+    g: 2,
+  }
 })();
