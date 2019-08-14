@@ -1,4 +1,4 @@
-(function () {
+(function iife() {
   var modalOpenBtn = document.querySelector('.button--open');
   var modalCloseBtn = document.querySelector('.button--close');
   var modal = document.querySelector('.modal');
@@ -6,14 +6,10 @@
   function closeModal() {
     modal.classList.remove('modal--active');
   }
-
-  modalOpenBtn.addEventListener('click', function () {
+  function openModal() {
     modal.classList.add('modal--active');
-  });
-  modalCloseBtn.addEventListener('click', closeModal);
-  // console.log(sdf);
-  const f = {
-    f: 1,
-    g: 2,
   }
-})();
+
+  modalOpenBtn.addEventListener('click', openModal);
+  modalCloseBtn.addEventListener('click', closeModal);
+}());

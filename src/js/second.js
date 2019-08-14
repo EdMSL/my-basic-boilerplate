@@ -1,4 +1,4 @@
-(function() {
+(function iife() {
   var input = document.querySelector('.block__input');
 
   function onInputChange() {
@@ -6,4 +6,4 @@
   }
 
   input.addEventListener('change', onInputChange);
-})();
+}());

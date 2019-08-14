@@ -1,19 +1,7 @@
 module.exports = {
   root: true,
-  env: {
-    es6: true,
-    browser: true,
-    commonjs: true,
-    node: true,
-  },
   extends: [
-    './config/eslint/best-practices',
-    './config/eslint/error',
-    './config/eslint/es6',
-    './config/eslint/node',
-    './config/eslint/strict',
-    './config/eslint/style',
-    './config/eslint/variables',
+    './config/eslint.es5.config.js',
   ],
   settings: {
     'import/resolver': {

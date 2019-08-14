@@ -5,15 +5,15 @@ module.exports = {
     // disallow trailing commas in object literals
     'comma-dangle': [2, 'always-multiline'],
     // disallow assignment in conditional expressions
-    'no-cond-assign': 2,
+    'no-cond-assign': [2, 'always'],
     // disallow use of console
-    'no-console': 2,
+    'no-console': 1,
     // disallow use of constant expressions in conditions
-    'no-constant-condition': 2,
+    'no-constant-condition': 1,
     // disallow control characters in regular expressions
     'no-control-regex': 2,
     // disallow use of debugger
-    'no-debugger': 2,
+    'no-debugger': 1,
     // disallow duplicate arguments in functions
     'no-dupe-args': 2,
     // disallow duplicate keys when creating object literals
@@ -27,15 +27,15 @@ module.exports = {
     // disallow assigning to the exception in a catch block
     'no-ex-assign': 2,
     // disallow double-negation boolean casts in a boolean context
-    'no-extra-boolean-cast': 2,
+    'no-extra-boolean-cast': 0,
     // disallow unnecessary parentheses
-    'no-extra-parens': 0,
+    'no-extra-parens': [2, 'functions'],
     // disallow unnecessary semicolons
     'no-extra-semi': 2,
     // disallow overwriting functions written as function declarations
     'no-func-assign': 2,
     // disallow function or variable declarations in nested blocks
-    'no-inner-declarations': [2, 'functions'],
+    'no-inner-declarations': 2,
     // disallow invalid regular expression strings in the RegExp constructor
     'no-invalid-regexp': 2,
     // disallow irregular whitespace outside of strings and comments
