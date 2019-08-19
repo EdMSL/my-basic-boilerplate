@@ -63,6 +63,7 @@
     "source-map-loader": "~0.2.4",
     "style-loader": "~0.23.1",
     "stylelint": "~10.1.0",
+    "stylelint-at-rule-no-children": "0.3.1",
     "stylelint-config-standard": "~18.3.0",
     "stylelint-order": "~3.0.0",
     "stylelint-scss": "~3.8.0",

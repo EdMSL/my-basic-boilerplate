@@ -3,6 +3,7 @@ module.exports = {
   plugins: [
     'stylelint-order',
     'stylelint-scss',
+    'stylelint-at-rule-no-children',
   ],
   ignoreFiles: [
     'build/**/*'
@@ -87,8 +88,16 @@ module.exports = {
     }],
     'selector-max-universal': 1,
     'value-keyword-case': 'lower',
+    'aditayvm/at-rule-no-children': true,
     'scss/dollar-variable-colon-newline-after': 'always-multi-line',
-    // 'scss/dollar-variable-pattern': /[a-z]*_color/,
+    'scss/at-function-named-arguments': ['always', {
+      'severity': 'warning',
+      'ignore': ['single-argument'],
+    }],
+    'scss/at-function-parentheses-space-before': ['never', {
+      'severity': 'warning',
+    }],
+    'scss/at-function-pattern': /.+-func/,
     'order/order': [
       {
         type: 'at-rule',
