@@ -26,14 +26,14 @@ input[type="radio"].visually-hidden {
   top: 0;
   left: 0;
 
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
 
-  &--active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &--closed {
+    display: none;
   }
 }
 
@@ -47,8 +47,6 @@ input[type="radio"].visually-hidden {
   height: 100%;
 
   background-color: $overlay-color;
-
-  opacity: 0.3;
 }
 
 .modal__body {
@@ -60,16 +58,12 @@ input[type="radio"].visually-hidden {
   text-align: center;
 
   background-color: #ffffff;
-}
 
-@media (min-width: $tablet-width) {
-  .modal__body {
+  @media (min-width: $tablet-width) {
     background-color: #a7ec58;
   }
-}
 
-@media (min-width: $desktop-width) {
-  .modal__body {
+  @media (min-width: $desktop-width) {
     background-color: #975b5b;
   }
 }

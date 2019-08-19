@@ -4,10 +4,10 @@
   var modal = document.querySelector('.modal');
 
   function closeModal() {
-    modal.classList.remove('modal--active');
+    modal.classList.add('modal--closed');
   }
   function openModal() {
-    modal.classList.add('modal--active');
+    modal.classList.remove('modal--closed');
   }
 
   modalOpenBtn.addEventListener('click', openModal);
