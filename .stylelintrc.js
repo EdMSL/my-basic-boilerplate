@@ -1,5 +1,8 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-prettier',
+  ],
   plugins: [
     'stylelint-order',
     'stylelint-scss',
@@ -62,6 +65,7 @@ module.exports = {
       'severity': 'warning',
       'message': 'Not needed with autoprefixer',
     }],
+    "property-blacklist": ["flex"],
     'string-quotes': ['double', {
       'severity': 'warning',
     }],
