@@ -25,14 +25,14 @@
   background-image:
     linear-gradient(
       0.2turn,
-      #ff0000 0%,
+      rgb(255, 0, 0) 0%,
       $secondary-color 30.55%,
     );
 }
 
 .block__input {
   &--colored {
-    background-color: rgb(240, 183, 26);
-    border: 3px solid tint-func($color: hsl(239, 78%, 57%), $percentage: 50%);
+    background-color: $bg-light-color;
+    border: 3px solid tint-func($color: rgb(59, 62, 230), $percentage: 50%);
   }
 }

@@ -57,13 +57,13 @@ input[type="radio"].visually-hidden {
 
   text-align: center;
 
-  background-color: #ffffff;
+  background-color: $bg-dark-color;
 
   @media (min-width: $tablet-width) {
-    background-color: #a7ec58;
+    background-color: $bg-light-color;
   }
 
   @media (min-width: $desktop-width) {
-    background-color: #975b5b;
+    background-color: $bg-white-color;
   }
 }

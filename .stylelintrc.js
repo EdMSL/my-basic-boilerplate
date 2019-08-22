@@ -4,6 +4,8 @@ module.exports = {
     'stylelint-order',
     'stylelint-scss',
     'stylelint-at-rule-no-children',
+    'stylelint-color-format',
+    'stylelint-declaration-use-variable',
   ],
   ignoreFiles: [
     'build/**/*'
@@ -25,13 +27,6 @@ module.exports = {
     'color-named': ['never', {
       'severity': 'warning',
       'message': 'No named (web) colors.',
-    }],
-    'color-hex-case': ['lower', {
-      'severity': 'warning',
-    }],
-    'color-hex-length': ['long', {
-      'severity': 'warning',
-      'message': 'No short notation for #HEX colors.'
     }],
     'comment-no-empty': [true, {
       'message': 'No empty comment',
@@ -89,6 +84,20 @@ module.exports = {
     'selector-max-universal': 1,
     'value-keyword-case': 'lower',
     'aditayvm/at-rule-no-children': true,
+    'color-format/format': {
+      'format': 'rgb',
+    },
+    'sh-waqar/declaration-use-variable': [[
+      'color',
+      'background-color',
+      {
+        ignoreValues: [
+          'transparent',
+          'inherit',
+          '/-func/',
+        ],
+      },
+    ]],
     'scss/dollar-variable-colon-newline-after': 'always-multi-line',
     'scss/at-function-named-arguments': ['always', {
       'severity': 'warning',
@@ -98,6 +107,9 @@ module.exports = {
       'severity': 'warning',
     }],
     'scss/at-function-pattern': /.+-func/,
+    'scss/no-duplicate-dollar-variables': true,
+    'scss/media-feature-value-dollar-variable': 'always',
+    'scss/operator-no-unspaced': true,
     'order/order': [
       {
         type: 'at-rule',
