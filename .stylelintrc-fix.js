@@ -24,26 +24,19 @@ module.exports = {
     }],
     'at-rule-no-vendor-prefix': true,
     'block-no-empty': [true, {
-      'severity': 'warning',
       'message': 'No empty rule blocks.',
     }],
     'color-named': ['never', {
-      'severity': 'warning',
       'message': 'No named (web) colors.',
     }],
     'comment-no-empty': [true, {
       'message': 'No empty comment',
-      'severity': 'warning',
     }],
-    'comment-empty-line-before': ['never', { // --fix
-      'severity': 'warning',
-    }],
+    'comment-empty-line-before': 'never', // --fix
     'declaration-empty-line-before': ['never', { // --fix
       'ignore': ['after-comment', 'after-declaration'],
     }],
-    'declaration-no-important': [true, {
-      'severity': 'warning',
-    }],
+    'declaration-no-important': true,
     'font-family-name-quotes': 'always-unless-keyword',
     'font-weight-notation': 'numeric',
     'function-calc-no-invalid': true,
@@ -55,7 +48,6 @@ module.exports = {
       'message': 'Missing leading zero.'
     }],
     'number-max-precision': [0, {
-      'severity': 'warning',
       'ignoreUnits': /^(?!px).*$/,
       'message': 'Value in px mast be integer number.',
     }],
@@ -64,9 +56,7 @@ module.exports = {
       'message': 'Not needed with autoprefixer',
     }],
     'string-quotes': 'double', // --fix
-    'time-min-milliseconds': [200, {
-      'severity': 'warning',
-    }],
+    'time-min-milliseconds': 200,
     'shorthand-property-no-redundant-values': true, // --fix
     'value-no-vendor-prefix': [true, {
       'message': 'Not needed with autoprefixer',
@@ -94,7 +84,6 @@ module.exports = {
     ]],
     'scss/dollar-variable-colon-newline-after': 'always-multi-line', // --fix
     'scss/at-function-named-arguments': ['always', {
-      'severity': 'warning',
       'ignore': ['single-argument'],
     }],
     'scss/at-function-parentheses-space-before': 'never', // --fix
@@ -315,8 +304,8 @@ module.exports = {
           'transform-style',
           'visibility',
           'opacity',
-          'cursor',
           'filter',
+          'cursor',
         ],
       },
       {
