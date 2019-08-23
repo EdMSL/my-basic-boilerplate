@@ -56,7 +56,9 @@ module.exports = {
       'message': 'Not needed with autoprefixer',
     }],
     'string-quotes': 'double', // --fix
-    'time-min-milliseconds': 200,
+    'time-min-milliseconds': [300, {
+      'message': 'No very fast animation',
+    }],
     'shorthand-property-no-redundant-values': true, // --fix
     'value-no-vendor-prefix': [true, {
       'message': 'Not needed with autoprefixer',
@@ -91,32 +93,36 @@ module.exports = {
     'scss/no-duplicate-dollar-variables': true,
     'scss/media-feature-value-dollar-variable': 'always',
     'scss/operator-no-unspaced': true,
-    'order/order': [  // --fix all
+    'order/order': [
+      [  // --fix all
+        {
+          type: 'at-rule',
+          name: 'include'
+        },
+        'declarations',
+        {
+          type: 'rule',
+          selector: '^&::(before|after)'
+        },
+        {
+          type: 'rule',
+          selector: '^&:\\w'
+        },
+        {
+          type: 'rule',
+          selector: '^&--'
+        },
+        {
+          type: 'rule',
+          selector: '^&_'
+        },
+        {
+          type: 'rule',
+          selector: '^.'
+        },
+      ],
       {
-        type: 'at-rule',
-        name: 'include'
-      },
-      'declarations',
-      'dollar-variables',
-      {
-        type: 'rule',
-        selector: '^&::(before|after)'
-      },
-      {
-        type: 'rule',
-        selector: '^&:\\w'
-      },
-      {
-        type: 'rule',
-        selector: '^&_'
-      },
-      {
-        type: 'rule',
-        selector: '^.'
-      },
-      {
-        type: 'at-rule',
-        hasBlock: true
+        unspecified: "bottom",
       },
     ],
     'order/properties-order': [ // --fix all
