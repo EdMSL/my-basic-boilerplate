@@ -1,11 +1,12 @@
 module.exports = {
   extends: [
-    'stylelint-config-recommended',
+    'stylelint-config-standard',
   ],
   plugins: [
-    'stylelint-scss',
     'stylelint-order',
+    'stylelint-scss',
     'stylelint-at-rule-no-children',
+    'stylelint-color-format',
     'stylelint-declaration-use-variable',
   ],
   ignoreFiles: [
@@ -30,6 +31,10 @@ module.exports = {
     'comment-no-empty': [true, {
       'message': 'No empty comment',
     }],
+    'comment-empty-line-before': 'never', // --fix
+    'declaration-empty-line-before': ['never', { // --fix
+      'ignore': ['after-comment', 'after-declaration'],
+    }],
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-unless-keyword',
     'font-weight-notation': 'numeric',
@@ -38,6 +43,9 @@ module.exports = {
     'function-url-quotes': 'always',
     'max-line-length': 80,
     'media-feature-name-no-vendor-prefix': true,
+    'number-leading-zero': ['always', { // --fix
+      'message': 'Missing leading zero.'
+    }],
     'number-max-precision': [0, {
       'ignoreUnits': /^(?!px).*$/,
       'message': 'Value in px mast be integer number.',
@@ -46,15 +54,24 @@ module.exports = {
     'property-no-vendor-prefix': [true, {
       'message': 'Not needed with autoprefixer',
     }],
+    'string-quotes': 'double', // --fix
     'time-min-milliseconds': [300, {
       'message': 'No very fast animation',
     }],
+    'shorthand-property-no-redundant-values': true, // --fix
     'value-no-vendor-prefix': [true, {
       'message': 'Not needed with autoprefixer',
     }],
+    'rule-empty-line-before': ['always', { // --fix
+      'ignore': ['first-nested'],
+    }],
     'selector-max-compound-selectors': 2,
     'selector-max-universal': 1,
+    'value-keyword-case': 'lower', // --fix
     'aditayvm/at-rule-no-children': true,
+    'color-format/format': { // --fix
+      'format': 'rgb',
+    },
     'sh-waqar/declaration-use-variable': [[
       'color',
       'background-color',
@@ -66,15 +83,17 @@ module.exports = {
         ],
       },
     ]],
+    'scss/dollar-variable-colon-newline-after': 'always-multi-line', // --fix
     'scss/at-function-named-arguments': ['always', {
       'ignore': ['single-argument'],
     }],
+    'scss/at-function-parentheses-space-before': 'never', // --fix
     'scss/at-function-pattern': /.+-func/,
     'scss/no-duplicate-dollar-variables': true,
     'scss/media-feature-value-dollar-variable': 'always',
     'scss/operator-no-unspaced': true,
     'order/order': [
-      [
+      [  // --fix all
         {
           type: 'at-rule',
           name: 'include'
@@ -105,7 +124,7 @@ module.exports = {
         unspecified: "bottom",
       },
     ],
-    'order/properties-order': [
+    'order/properties-order': [ // --fix all
       {
         groupName: "positioning",
         emptyLineBefore: "always",
@@ -184,6 +203,7 @@ module.exports = {
           'caption-side',
           'vertical-align',
           'direction',
+          'writing-mode',
           'font-size-adjust',
           'font-stretch',
           'font-effect',

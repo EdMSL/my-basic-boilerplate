@@ -17,7 +17,6 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ecmaFeatures: {},
   globals: {
     require: false,
     module: false,
