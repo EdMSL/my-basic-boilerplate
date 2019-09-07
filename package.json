@@ -38,12 +38,12 @@
     }
   },
   "lint-staged": {
-    "*.scss": [
+    "src/**/*.scss": [
       "stylelint --config ./.stylelintrc.js",
       "git add"
     ],
     "src/js/**/*.js": [
-      "eslint src/js/**/*.js",
+      "eslint",
       "git add"
     ]
   },
