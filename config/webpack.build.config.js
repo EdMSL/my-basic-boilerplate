@@ -5,6 +5,7 @@ const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
 const ImageminWebpPlugin = require('./webpack/plugins/imagemin-webp-webpack-plugin');
 const ImageminPluginLossless = require('./webpack/plugins/imagemin-webpack-lossless');
 const ImageminPluginLossy = require('./webpack/plugins/imagemin-webpack-lossy');
+const copyFavicons = require('./webpack/plugins/copy-favicons');
 const css = require('./webpack/rules/css');
 const js = require('./webpack/rules/js');
 const images = require('./webpack/rules/images');
@@ -16,6 +17,7 @@ const plugins = [
   ImageminWebpPlugin(),
   ImageminPluginLossless(),
   ImageminPluginLossy(),
+  copyFavicons(`${baseWebpackConfig.externals.paths.src}/favicons`),
   SVGSpritePlugin(process.env.NODE_ENV, `${baseWebpackConfig.externals.paths.src}/images/sprite`),
 ];
 

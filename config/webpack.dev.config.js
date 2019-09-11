@@ -3,10 +3,12 @@ const css = require('./webpack/rules/css');
 const js = require('./webpack/rules/js');
 const images = require('./webpack/rules/images');
 const devserver = require('./webpack/devserver');
+const copyFavicons = require('./webpack/plugins/copy-favicons');
 const SVGSpritePlugin = require('./webpack/plugins/svgspritemap-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
 
 const plugins = [
+  copyFavicons(`${baseWebpackConfig.externals.paths.src}/favicons`),
   SVGSpritePlugin(process.env.NODE_ENV, `${baseWebpackConfig.externals.paths.src}/images/sprite`),
 ];
 

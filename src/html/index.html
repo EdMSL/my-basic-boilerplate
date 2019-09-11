@@ -17,8 +17,10 @@
     <link rel="preload" href="fonts/opensanslight.woff2" as="font">
     <link rel="preload" href="fonts/opensansbold.woff" as="font">
     <link rel="preload" href="fonts/opensansbold.woff2" as="font">
-    <link rel="stylesheet" href="css/styles.css">
     <title>Document</title>
+    <% if (htmlWebpackPlugin.options.inject === false)
+      { %> <link rel="stylesheet" href="css/styles.css"> <% }
+    %>
   </head>
   <body>
     <header></header>
@@ -49,6 +51,8 @@
       </div>
     </section>
 
-    <script src="js/index.js"></script>
+    <% if (htmlWebpackPlugin.options.inject === false)
+      { %> <script src="js/index.js"></script> <% }
+    %>
   </body>
 </html>

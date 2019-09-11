@@ -46,6 +46,10 @@ module.exports = function() {
         return false;
       }
 
+      if (/favicons/.test(sourcePath)) {
+        return false;
+      }
+
       if (/sprite/.test(sourcePath)) {
         return false;
       }
