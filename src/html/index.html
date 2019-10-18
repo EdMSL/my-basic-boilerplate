@@ -27,7 +27,14 @@
     <main>
       <div class="main-wrapper">
         <div class="block">
-          <img src="images/content/test.png" alt="car">
+          <picture>
+            <source type="image/webp" media="(min-width: 960px)" srcset="images/content/test.png.webp 1x, images/content/test.png.webp 2x">
+            <source type="image/webp" media="(min-width: 660px)" srcset="images/content/test.png.webp 1x, images/content/test.png.webp 2x">
+            <source type="image/webp" srcset="images/content/test.png.webp 1x, images/content/test.png.webp 2x">
+            <source media="(min-width: 960px)" srcset="images/content/test.png 1x, images/content/test.png 2x">
+            <source media="(min-width: 660px)" srcset="images/content/test.png 1x, images/content/test.png 2x">
+            <img src="images/content/test.png" srcset="images/content/test.png 2x" alt="Фото Для добавления в галерею">
+          </picture>
         </div>
         <svg class="svg-sprite">
           <use xlink:href="images/sprite.svg#icon-swarm"></use>
