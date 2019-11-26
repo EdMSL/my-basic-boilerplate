@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   extends: [
     // all rules from airbnb config
-    './config/eslint.es5.config.js',
+    './config/eslint.es6.config.js',
   ],
   settings: {
     'import/resolver': {
